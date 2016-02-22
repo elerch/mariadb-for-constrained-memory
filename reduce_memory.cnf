@@ -1,28 +1,22 @@
 [mysqld]
-performance_schema=0
-innodb_buffer_pool_size=5M
-innodb_log_buffer_size=256K
-query_cache_size=0
-max_connections=50
-key_buffer_size=8
-thread_cache_size=0
-host_cache_size=0
-innodb_ft_cache_size=1600000
-innodb_ft_total_cache_size=32000000
+performance_schema             = 0
+# CACHES AND LIMITS #
+tmp-table-size                 = 32M
+max-heap-table-size            = 32M
+query-cache-type               = 0
+query-cache-size               = 0
+max-connections                = 150
+thread-cache-size              = 16
+open-files-limit               = 65535
+table-definition-cache         = 1024
+table-open-cache               = 2048
 
-# per thread or per operation settings
-thread_stack=131072
-sort_buffer_size=32K
-read_buffer_size=8200
-read_rnd_buffer_size=8200
-max_heap_table_size=16K
-tmp_table_size=1K
-bulk_insert_buffer_size=0
-join_buffer_size=128
-net_buffer_length=1K
-innodb_sort_buffer_size=64K
-
-#settings that relate to the binary log (if enabled)
-binlog_cache_size=4K
-binlog_stmt_cache_size=4K
+# INNODB #
+innodb_buffer_pool_size        = 32M
+innodb_log_buffer_size         = 256K
+innodb-flush-method            = O_DIRECT
+innodb-log-files-in-group      = 2
+innodb-log-file-size           = 64M
+innodb-flush-log-at-trx-commit = 1
+innodb-file-per-table          = 1
 
